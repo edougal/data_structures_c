@@ -2,6 +2,7 @@
 #include <stdlib.h> // malloc, free
 #include <stdio.h> 	// printf
 #include <stddef.h> // NULL 
+#include <stdint.h>	// int64_t
 
 #include "dynamic_array.h" 
 

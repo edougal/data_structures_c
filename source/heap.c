@@ -1,12 +1,8 @@
 
 #include <stdio.h> 	// printf
 #include <stddef.h> // NULL 
+#include <stdint.h>	// int64_t
 
-
-// option to use explicit or implicit datastructure
-#ifndef HEAP_USE_IMPLICIT_DATASTRUCTURE
-#define HEAP_USE_IMPLICIT_DATASTRUCTURE 0
-#endif
 
 #if HEAP_USE_IMPLICIT_DATASTRUCTURE == 1
 //implicit implementation
@@ -15,13 +11,24 @@
 
 
 
-#elif 
+
+#else
 // explicit implementation
 
-
+typedef struct heap_node_s {	
+	struct heap_node_s * left;
+	struct heap_node_s * right; 
+	int64_t val; 
+} heap_node_t; 
 
 
 
 
 
 #endif 
+
+int main() {
+
+
+	return 0; 
+}

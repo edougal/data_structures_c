@@ -2,7 +2,6 @@
 #ifndef __DYNAMIC_ARRAY__H
 #define __DYNAMIC_ARRAY__H
 
-
 #include <stdint.h>
 
 typedef struct {
