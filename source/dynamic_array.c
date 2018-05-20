@@ -9,6 +9,21 @@
 #define DEFAULT_SIZE 8
 #define GROWTH_FACTOR 3 / 2
 
+
+// initialize with values
+
+dynamic_array_t * dynamic_array_init_with_vals(int64_t * vals, uint64_t length) { 
+
+	dynamic_array_t * array = dynamic_array_init();
+
+	for(uint64_t i = 0; i < length; i++) {
+		dynamic_array_append(array, vals[i]);
+	}
+
+	return array; 
+}
+
+
 // initialize array
 
 dynamic_array_t * dynamic_array_init() {
@@ -28,7 +43,6 @@ dynamic_array_t * dynamic_array_init() {
 	new_array->vals = (int64_t *) malloc(sizeof(int64_t) * DEFAULT_SIZE);
 
 	return new_array; 
-
 }
 
 void dynamic_array_uninit(dynamic_array_t * array) {
@@ -105,13 +119,21 @@ void dynamic_array_print(dynamic_array_t * array) {
 		return; 
 	}
 
-	printf("array = [");
+	printf(" = [");
 	for(int i = 0; i < dynamic_array_length(array)-1; i++) {
 		printf(" %lli, ", dynamic_array_get(array, i));
 	}
 	printf(" %lli]\n", dynamic_array_get(array, dynamic_array_length(array)-1));
 }
 
+void dynamic_array_swap(dynamic_array_t * array, uint64_t element1, uint64_t element2) {
+	if(element1 > array->length|| element2 > array->length) {
+		return;
+	}
+	int64_t temp = array->vals[element1];
+	array->vals[element1] = array->vals[element2];
+	array->vals[element2] = temp; 
+}
 
 // test cases 
 
@@ -123,6 +145,7 @@ void dynamic_array_test() {
 }
 
 
+/*
 int main() {
 
 	dynamic_array_t * array = dynamic_array_init(); 
@@ -144,4 +167,4 @@ int main() {
 
 	return 0;
 }
-
+*/
